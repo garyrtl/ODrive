@@ -53,6 +53,10 @@ public:
         float electrical_power_bandwidth = 20.0f; // [rad/s] filter cutoff for electrical power for spinout detection
         float spinout_electrical_power_threshold = 10.0f; // [W] electrical power threshold for spinout detection
         float spinout_mechanical_power_threshold = -10.0f; // [W] mechanical power threshold for spinout detection
+        float ffb_min_position = 0.0;
+        float ffb_max_position = 5.6f;
+        float ffb_min_torque = 0.05f;
+        float ffb_max_torque = 0.3f;
 
         // custom setters
         Controller* parent;

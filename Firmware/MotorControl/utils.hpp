@@ -156,3 +156,21 @@ inline int mod(const int dividend, const int divisor){
     if (r < 0) r += divisor;
     return r;
 }
+
+/**
+ * @brief Re-maps a number from one range to another, clamping the output to the target range.
+ * 
+ * This function clamps the input to the source range, then maps it linearly to the target range.
+ * The output is guaranteed to be within [out_min, out_max].
+ * 
+ * Example: map(5, 0, 10, 0, 100) returns 50
+ *          map(15, 0, 10, 0, 100) returns 100 (clamped)
+ * 
+ * @param x The number to map.
+ * @param in_min The lower bound of the value's current range.
+ * @param in_max The upper bound of the value's current range.
+ * @param out_min The lower bound of the value's target range.
+ * @param out_max The upper bound of the value's target range.
+ * @return The mapped value, clamped to [out_min, out_max].
+ */
+float map(float x, float in_min, float in_max, float out_min, float out_max);

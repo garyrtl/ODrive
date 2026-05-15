@@ -275,6 +275,12 @@ bool Controller::update() {
             vel_setpoint_ = input_vel_ + autotuning_.vel_amplitude * c;
             torque_setpoint_ = input_torque_ + autotuning_.torque_amplitude * -s;
         } break;
+        case INPUT_MODE_FORCE_FEEDBACK: {
+            // 1. Get current position (turns) and normalize (0.0 to 1.0)
+            float pos = axis_->encoder_.pos_estimate_.present().value_or(0.0f);
+            float torque = map(pos, config_.ffb_min_position, config_.ffb_max_position, config_.ffb_min_torque, config_.ffb_max_torque);
+            torque_setpoint_ = torque;
+        } break;
         default: {
             set_error(ERROR_INVALID_INPUT_MODE);
             return false;

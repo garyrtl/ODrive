@@ -188,3 +188,14 @@ void delay_us(uint32_t us)
     }
 }
 
+float map(float x, float in_min, float in_max, float out_min, float out_max) {
+    // Guard against division by zero
+    if (in_min == in_max) return (out_min + out_max) * 0.5f;
+
+    // Clamp input, map, then clamp output
+    float clamped_input = (x < in_min) ? in_min : (x > in_max) ? in_max : x;
+    float mapped = out_min + (clamped_input - in_min) * (out_max - out_min) / (in_max - in_min);
+
+    // Return clamped output
+    return (mapped < out_min) ? out_min : (mapped > out_max) ? out_max : mapped;
+}

@@ -1169,6 +1169,14 @@ interfaces:
             type: float32
             doc: "Electrical power threshold for spinout detection. This should be a positive value"
             unit: Watt
+          ffb_min_position:
+            type: float32
+          ffb_max_position:
+            type: float32
+          ffb_min_torque:
+            type: float32
+          ffb_max_torque:
+            type: float32
       autotuning:
         c_is_class: False
         doc: Automatically generate sine waves for frequency-domain response tuning
@@ -1723,7 +1731,8 @@ valuetypes:
           Used for tuning your odrive, this mode allows the user to set different frequencies.
           Set control_mode for the loop you want to tune, then set the frequency desired.
           The ODrive will send a 1 turn amplitude sine wave to the controller with the given frequency and phase.
-
+      FORCE_FEEDBACK:
+        brief: For active pedal.
   ODrive.Motor.MotorType:
     values:
       HIGH_CURRENT:
